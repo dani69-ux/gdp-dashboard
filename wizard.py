@@ -1,7 +1,7 @@
 import streamlit as st
-from google import genai
+from google import genai 
 
-st.set_page_config(page_title="WIZARD AI", page_icon=" ", layout="centered")
+st.set_page_config(page_title="WIZARD AI", page_icon=" ", layout="cemtered")
 
 # Iniwan nating blanko para sa kaligtasan sa internet
 AKING_API_KEY = st.secret["GEMINI_API_KEY"] if "GEMINI_API_KEY" in st.secrets else ""
@@ -21,11 +21,6 @@ st.markdown("""
         border-radius: 12px;
         box-shadow: 0px 2px 5px rgba(0,0,0,0,05); 
     } 
-    h1 { color: #3a225d; text-align: center; font-family: 'Arial'; font-weight: bold; }
-    </style> 
-""", unsafe_allow_html=True) 
-
-st.title("WIZARD AI")
 
 gabay = (
     "Ikaw si WIZARD, ang tapat at matalinong AI Assistant ni Dani. "
