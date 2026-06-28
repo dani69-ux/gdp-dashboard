@@ -1,5 +1,15 @@
-import streamlit as st
-from google import genai 
+import os 
+import sys 
+import subprocess 
+
+#Sipa sa server para sapilitani-download ang nawawalang library
+try:
+    import google.genai as genai
+except ImportError:
+    subprocess.check_call([sys.executable, "-m", "pip", "install", google-genai"])
+    import google.genai as genai
+
+import streamloit as st  
 
 st.set_page_config(page_title="WIZARD AI", page_icon=" ", layout="cemtered")
 
@@ -66,4 +76,3 @@ if tanong := st.chat_input("Iutos kay Wizard..."):
 if st.button("Burahin ang Chat"):
     st.session_state.messages = [{"role": "assistant", "content": "Nabura na ang chat. Handa na ulit ako!"}]  
     st.rerun()
-
