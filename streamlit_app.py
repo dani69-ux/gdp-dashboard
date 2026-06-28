@@ -1,5 +1,5 @@
 import streamlit as st
-import google.generativeai as genai 
+import google.generativeai as genai
 
 # I-setup ang API Key gamit ang lumang library
 genai.configure(api_key_=st.secrets["GEMINI_API_KEY"])
