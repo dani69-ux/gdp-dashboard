@@ -1,16 +1,8 @@
-import os 
-import sys 
-import subprocess 
+import streamlit as st
+import google.generativeai as genai 
 
-#Sipa sa server para sapilitani-download ang nawawalang library
-try:
-    import google.genai as genai
-except ImportError:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "google-genai"])
-    import google.genai as genai
-
-import streamloit as st  
-
+# I-setup ang API Key gamit ang lumang library
+genai.configure(api_key_=st.secrets["GEMINI_API_KEY"])
 st.set_page_config(page_title="WIZARD AI", page_icon=" ", layout="cemtered")
 
 # Kukunin nito ang API key nang ligtas mula sa Streamlit Secrets vault
