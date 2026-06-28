@@ -6,7 +6,7 @@ import subprocess
 try:
     import google.genai as genai
 except ImportError:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", google-genai"])
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "google-genai"])
     import google.genai as genai
 
 import streamloit as st  
