@@ -2,7 +2,7 @@ import streamlit as st
 import google.generativeai as genai
 
 # I-setup ang API Key gamit ang lumang library
-genai.configure(api_key_=st.secrets["GEMINI_API_KEY"])
+genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 st.set_page_config(page_title="WIZARD AI", page_icon=" ", layout="cemtered")
 
 # Kukunin nito ang API key nang ligtas mula sa Streamlit Secrets vault
