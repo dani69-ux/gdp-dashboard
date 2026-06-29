@@ -1,12 +1,12 @@
 import streamlit as st
 from google import genai
 
-st.title("GDP Dashboard")
+st.title("Wizard AI")
 
 AKING_API_KEY = st.secrets["GEMINI_API_KEY"]
 client = genai.Client(api_key=AKING_API_KEY)
 
-user_input = st.text_input("Magtanong tungkol sa GDP:")
+user_input = st.text_input("Magtanong kay Wizard AI:")
 
 if user_input:
     response = client.models.generate_content(
