@@ -1,6 +1,8 @@
 import streamlit as st
 from google import genai
 
+st.set_page_config(page_title="Wizard AI", page_icon=" ")
+
 st.title("Wizard AI")
 
 AKING_API_KEY = st.secrets["GEMINI_API_KEY"]
