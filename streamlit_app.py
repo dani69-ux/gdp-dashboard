@@ -3,7 +3,7 @@ import google.generativeai as genai # pyright: ignore[reportMissingImports]
 
 # I-setup ang API Key gamit ang lumang library
 genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
-st.set_page_config(page_title="WIZARD AI", page_icon=" ", layout="cemtered")
+st.set_page_config(page_title="WIZARD AI", page_icon=" ", layout="centered")
 
 # Kukunin nito ang API key nang ligtas mula sa Streamlit Secrets vault
 AKING_API_KEY = st.secret["GEMINI_API_KEY"] if "GEMINI_API_KEY" in st.secrets else ""
