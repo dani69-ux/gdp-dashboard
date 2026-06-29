@@ -6,7 +6,7 @@ genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 st.set_page_config(page_title="WIZARD AI", page_icon=" ", layout="centered")
 
 # Kukunin nito ang API key nang ligtas mula sa Streamlit Secrets vault
-AKING_API_KEY = st.secret["GEMINI_API_KEY"] if "GEMINI_API_KEY" in st.secrets else ""
+AKING_API_KEY = st.secrets["GEMINI_API_KEY"] if "GEMINI_API_KEY" in st.secrets else ""
 
 try:
     client = genai.Client(api_key=AKING_API_KEY)
