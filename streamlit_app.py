@@ -40,20 +40,20 @@ if user_input:
 
         api_contents.append("assistant: ") 
 
-    try:
-        # 1. Tawagan si Gemini gamit ang buong history ng usapan
-        respond = client.models.generate_content(
-            model='gemini-2.5-flash', 
-            contents="\n".join(api_contents), 
-        )
-        # 2. DAPAT NASA LOOB ITO NG TRY (may 8 spaces o dalawang tab mula sa kaliwa)
-        # I-display ang sagot ni Wizard AI at i-save sa history
-        with st.chat_message("assistant", avatar="🧙‍♂️"): 
-            st.write(response.text) 
-        st.session_state.chat_history.append({"role": "assistant", "tetxt": response.text}) 
+        try:
+            # 1. Tawagan si Gemini gamit ang buong history ng usapan
+            respond = client.models.generate_content(
+                model='gemini-2.5-flash', 
+                contents="\n".join(api_contents), 
+            )
+            # 2. DAPAT NASA LOOB ITO NG TRY (may 8 spaces o dalawang tab mula sa kaliwa)
+            # I-display ang sagot ni Wizard AI at i-save sa history
+            with st.chat_message("assistant", avatar="🧙‍♂️"): 
+                st.write(response.text) 
+            st.session_state.chat_history.append({"role": "assistant", "tetxt": response.text}) 
 
-    except Exception as e:
-        # 3. Kapag nagka-error si Gemini, dito siya tatalon at ligtas ang app
-        st.error("🚨 Error Wizard AI.") 
-        st.warning(f"Detalye ng problema: {e}") 
+        except Exception as e:
+            # 3. Kapag nagka-error si Gemini, dito siya tatalon at ligtas ang app
+            st.error("🚨 Error Wizard AI.") 
+            st.warning(f"Detalye ng problema: {e}") 
 
