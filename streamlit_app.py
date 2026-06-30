@@ -41,19 +41,19 @@ if user_input:
         api_contents.append("assistant: ") 
 
     try:
-        # Tawagan si Gemini gamit ang buong history ng usapan
+        # 1. Tawagan si Gemini gamit ang buong history ng usapan
         respond = client.models.generate_content(
             model='gemini-2.5-flash', 
             contents="\n".join(api_contents), 
         )
-        # IPASOK NATIN ITO SA LOOB NG TRY para mangyari lang kapag SUCCESSFUL si response
+        # 2. DAPAT NASA LOOB ITO NG TRY (may 8 spaces o dalawang tab mula sa kaliwa)
         # I-display ang sagot ni Wizard AI at i-save sa history
         with st.chat_message("assistant", avatar="🧙‍♂️"): 
             st.write(response.text) 
         st.session_state.chat_history.append({"role": "assistant", "tetxt": response.text}) 
 
     except Exception as e:
-        # Mas malinaw na error message para alam natin ang dahilan 
+        # 3. Kapag nagka-error si Gemini, dito siya tatalon at ligtas ang app
         st.error("🚨 Error Wizard AI.") 
         st.warning(f"Detalye ng problema: {e}") 
 
