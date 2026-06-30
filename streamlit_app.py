@@ -5,7 +5,6 @@ from google import genai
 st.set_page_config(page_title="Wizard AI", page_icon="🧙‍♂️", layout="centered") 
 
 st.title("🧙‍♂️ Wizard AI with Chat History") 
-st.write("Mas matalino na ako ngayon! Naaalala ko na ang mga pinag-usapan natin.") 
 
 # 1. Simulan ang memory ng Streamlit (Session State) para sa chat history
 if "chat_history" not in st.session_state:
@@ -34,16 +33,12 @@ if user_input:
         st.write(user_input)
     st.session_state.chat_history.append({"role": "user", "text": user_input})
 
-    # I-format ang buong history para ipadala kay Gemini para may kontekso siya
-    # Gagawa tayo ng listahan ng contents mula sa naunang usapan
-    api_contents = [] 
+    # I-format ang buong history para ipadala kay Gemini
+    api_contents =[]
     for msg in st.session_state.chat_history: 
-        # Ang google-genai ay tumatanggap ng Content objects o simpleng text string list depende sa model,
-        # pero para sa simpleng history, ipapasa natin ang bawat text nang sunod-sunod.
-        api_contents.append(f"{msg['role']}: {msg['text']}") 
+        api_contents.append(f"{msg['role']}: {msg['text']}")
 
-    # Idagdag ang huling paalala para sumagot ang model bilang AI
-    api_contents.append("assistant: ")
+        api_contents.append("assistant: ") 
 
     try:
         # Tawagan si Gemini gamit ang buong history ng usapan
@@ -51,7 +46,7 @@ if user_input:
             model='gemini-2.5-flash', 
             contents="\n".join(api_contents), 
         )
-
+        # IPASOK NATIN ITO SA LOOB NG TRY para mangyari lang kapag SUCCESSFUL si response
         # I-display ang sagot ni Wizard AI at i-save sa history
         with st.chat_message("assistant", avatar="🧙‍♂️"): 
             st.write(response.text) 
