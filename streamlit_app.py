@@ -1,4 +1,4 @@
-import streamlit
+import streamlit as st
 from google import genai
 
 # Setup ng Page at Icon
