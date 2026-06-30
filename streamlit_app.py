@@ -58,5 +58,7 @@ if user_input:
         st.session_state.chat_history.append({"role": "assistant", "tetxt": response.text}) 
 
     except Exception as e:
-        st.error(f"May kaunting aberya: {str(e)}") 
+        # Mas malinaw na error message para alam natin ang dahilan 
+        st.error("🚨 May problema kay Wizard AI.") 
+        st.warning(f"Detalye ng problema: {e}") 
 
