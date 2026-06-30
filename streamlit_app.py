@@ -31,12 +31,12 @@ if user_input:
     # I-display agad ang tinype ng user at i-save sa history
     with st.chat_message("user"):
         st.write(user_input)
-    st.session_state.chat_history.append({"role": "user", "text": user_input})
+        st.session_state.chat_history.append({"role": "user", "text": user_input})
 
-    # I-format ang buong history para ipadala kay Gemini
-    api_contents =[]
-    for msg in st.session_state.chat_history: 
-        api_contents.append(f"{msg['role']}: {msg['text']}")
+        # I-format ang buong history para ipadala kay Gemini
+        api_contents =[]
+        for msg in st.session_state.chat_history: 
+            api_contents.append(f"{msg['role']}: {msg['text']}")
 
         api_contents.append("assistant: ") 
 
