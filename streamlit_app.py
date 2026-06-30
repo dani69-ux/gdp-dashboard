@@ -54,6 +54,6 @@ if user_input:
 
     except Exception as e:
         # Mas malinaw na error message para alam natin ang dahilan 
-        st.error("🚨 May problema kay Wizard AI.") 
+        st.error("🚨 Error Wizard AI.") 
         st.warning(f"Detalye ng problema: {e}") 
 
