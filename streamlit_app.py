@@ -5,8 +5,9 @@ from google import genai
 st.set_page_config(page_title="Wizard AI", page_icon="🧙‍♂️", layout="centered") 
 
 st.title("🧙‍♂️ Wizard AI")
+st.write("Ask question.") 
 
-# 1. Simulan ang memory ng Streamlit (Session State) para sa chat history
+# Simulan ang memory ng Streamlit (Session State) para sa chat history
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
@@ -14,7 +15,7 @@ if "chat_history" not in st.session_state:
 AKING_API_KEY = st.secrets["GEMINI_API_KEY"]
 client = genai.Client(api_key=AKING_API_KEY)
 
-# 2. I-display ang mga lumang pinag-usapan (History List) sa screen
+# I-display ang mga lumang pinag-usapan (History List) sa screen
 for message in st.session_state.chat_history:
     if message["role"] == "user":
         with st.chat_message("user"):
@@ -24,7 +25,7 @@ for message in st.session_state.chat_history:
         with st.chat_message("assistant", avatar="🧙‍♂️"):
             st.write(message["text"]) 
 
-# 3. Kahon para sa bagong tanong ng user
+# Kahon para sa bagong tanong ng user
 user_input = st.chat_input("Ask Wizard AI...")
 
 if user_input:
@@ -41,13 +42,13 @@ if user_input:
     api_contents.append("assistant: ") 
 
     try:
-        # 1. Tawagan si Gemini gamit ang buong history ng usapan
+        # Tawagan si Gemini gamit ang buong history ng usapan
         respond = client.models.generate_content(
             model='gemini-2.5-flash', 
             contents="\n".join(api_contents), 
         )
 
-        # 2. DAPAT NASA LOOB ITO NG TRY (may 8 spaces o dalawang tab mula sa kaliwa)
+        # DAPAT NASA LOOB ITO NG TRY (may 8 spaces o dalawang tab mula sa kaliwa)
         # I-display ang sagot ni Wizard AI at i-save sa history
         with st.chat_message("assistant", avatar="🧙‍♂️"): 
             st.write(response.text) 
