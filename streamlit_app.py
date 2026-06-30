@@ -57,5 +57,5 @@ if user_input:
     except Exception as e:
         # 3. Kapag nagka-error si Gemini, dito siya tatalon at ligtas ang app
         st.error("🚨 Error Wizard AI.") 
-        st.warning(f"Detalye ng problema: {e}") 
+        st.warning(f"Detalye ng problema: {e}")
 
