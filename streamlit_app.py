@@ -4,7 +4,7 @@ from google import genai
 # Setup ng Page at Icon
 st.set_page_config(page_title="Wizard AI", page_icon="🧙‍♂️", layout="centered") 
 
-st.title("🧙‍♂️ Wizard AI with Chat History") 
+st.title("🧙‍♂️ Wizard AI")
 
 # 1. Simulan ang memory ng Streamlit (Session State) para sa chat history
 if "chat_history" not in st.session_state:
