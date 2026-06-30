@@ -19,7 +19,7 @@ client = genai.Client(api_key=AKING_API_KEY)
 for message in st.session_state.chat_history:
     if message["role"] == "user":
         with st.chat_message("user"):
-            st.writer(message["text"]) 
+            st.write(message["text"]) 
 
     else:
         with st.chat_message("assistant", avatar="🧙‍♂️"):
