@@ -42,20 +42,19 @@ if user_input:
     api_contents.append("assistant: ") 
 
     try:
-        # Tawagan si Gemini gamit ang buong history ng usapan
-        respond = client.models.generate_content(
-            model='gemini-2.5-flash', 
-            contents="\n".join(api_contents), 
+        # 1. Tawagan si Gimini gamit ang buong historu ng usapan
+        response = client.models.generate_content(
+            model='gemini-2.5-flash',
+            contents="\n".join(api_contents),
         )
-
-        # DAPAT NASA LOOB ITO NG TRY (may 8 spaces o dalawang tab mula sa kaliwa)
-        # I-display ang sagot ni Wizard AI at i-save sa history
+        
+        # 2. TAMA (may 8 spaces o dalawang tab mula sa kaliwa - kasama dapat sa loob ng try):
         with st.chat_message("assistant", avatar="🧙‍♂️"): 
-            st.write(response.text) 
-        st.session_state.chat_history.append({"role": "assistant", "tetxt": response.text}) 
+            st.write(response.text)
+        st.session_state.chat_history.append({"role": "assistant", "text": response.text}) 
 
     except Exception as e:
-        # 3. Kapag nagka-error si Gemini, dito siya tatalon at ligtas ang app
+        # 3. Kapag ubos ang quota (429), dito siya dadaan at hindi magpapakita ang 'response is not defined'
         st.error("🚨 Error Wizard AI.") 
         st.warning(f"Detalye ng problema: {e}")
 
