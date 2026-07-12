@@ -2,11 +2,10 @@ import streamlit as st
 from google import genai
 
 # Setup ng Page at Icon
-st.set_page_config(page_title="Wizard AI", page_icon="🧙‍♂️", layout="centered") 
+st.set_page_config(page_title="Dani AI", page_icon="🕵🏼", layout="centered") 
 
-st.title("🧙‍♂️ Wizard AI")
+st.title("🕵🏼 Dani AI")
 st.write("Ask question.") 
-
 # Simulan ang memory ng Streamlit (Session State) para sa chat history
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
@@ -22,11 +21,11 @@ for message in st.session_state.chat_history:
             st.write(message["text"]) 
 
     else:
-        with st.chat_message("assistant", avatar="🧙‍♂️"):
+        with st.chat_message("assistant", avatar="🕵"):
             st.write(message["text"]) 
 
 # Kahon para sa bagong tanong ng user
-user_input = st.chat_input("Ask Wizard AI...")
+user_input = st.chat_input("Ask Dani AI...")
 
 if user_input:
     # I-display agad ang tinype ng user at i-save sa history
@@ -49,12 +48,12 @@ if user_input:
         )
         
         # 2. TAMA (may 8 spaces o dalawang tab mula sa kaliwa - kasama dapat sa loob ng try):
-        with st.chat_message("assistant", avatar="🧙‍♂️"): 
+        with st.chat_message("assistant", avatar="🕵🏼"): 
             st.write(response.text)
         st.session_state.chat_history.append({"role": "assistant", "text": response.text}) 
 
     except Exception as e:
         # 3. Kapag ubos ang quota (429), dito siya dadaan at hindi magpapakita ang 'response is not defined'
-        st.error("🚨 Error Wizard AI.") 
+        st.error("🚨 Error Dani AI.") 
         st.warning(f"Detalye ng problema: {e}")
 
